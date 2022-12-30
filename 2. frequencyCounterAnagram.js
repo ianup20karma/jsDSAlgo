@@ -10,15 +10,15 @@ function validAnagram(str1, str2) {
         acc[crr] = (acc[crr] || 0) + 1;
         return acc;
       }, {});
-  
+
       const str1Count = subStrCount(str1);
       const str2Count = subStrCount(str2);
-  
+
       for (const key in str1Count) {
-          if (str2Count.hasOwnProperty(key) && str1Count[key] === str2Count[key]) continue;
-          else return false;
+        if (str2Count.hasOwnProperty(key) && str1Count[key] === str2Count[key]) continue;
+        else return false;
       }
-  
+
       return true;
     }
   }

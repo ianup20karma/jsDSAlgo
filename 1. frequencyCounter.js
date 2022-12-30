@@ -10,16 +10,16 @@ function same(arr1, arr2) {
         acc[crr] = (acc[crr] || 0) + 1;
         return acc;
       }, {});
-  
+
       const arr1Count = arrElCount(arr1);
       const arr2Count = arrElCount(arr2);
-  
+
       for (const key in arr1Count) {
-          const arr2El = arr1Count[key] ** 2;
-          if (arr2Count.hasOwnProperty(arr2El) && arr1Count[key] === arr2Count[arr2El]) continue;
-          else return false;
+        const arr2El = arr1Count[key] ** 2;
+        if (arr2Count.hasOwnProperty(arr2El) && arr1Count[key] === arr2Count[arr2El]) continue;
+        else return false;
       }
-  
+
       return true;
     }
   }
