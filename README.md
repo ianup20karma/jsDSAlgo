@@ -1,4 +1,4 @@
-JAVASCRIPT WITH DATA STRUCTURE AND ALGORITHM:
+JAVASCRIPT WITH DATA STRUCTURE AND ALGORITHM
 =============================================
 
 This is a personal repository.
