@@ -3,25 +3,21 @@
 
 function same(arr1, arr2) {
   if (arr1.length !== arr2.length) return false;
+  else if (arr1.length === 0 || arr2.length === 0) return true;
   else {
-    if (arr1.length === 0 || arr2.length === 0) return true;
-    else {
-      const arrElCount = arr => arr.reduce((acc, crr) => {
-        acc[crr] = (acc[crr] || 0) + 1;
-        return acc;
-      }, {});
+    const counts = arr => arr.reduce((acc, crr) => {
+      acc[crr] = (acc[crr] || 0) + 1;
+      return acc;
+    }, {});
 
-      const arr1Count = arrElCount(arr1);
-      const arr2Count = arrElCount(arr2);
+    const arr1Counts = counts(arr1);
+    const arr2Counts = counts(arr2);
 
-      for (const key in arr1Count) {
-        const arr2El = arr1Count[key] ** 2;
-        if (arr2Count.hasOwnProperty(arr2El) && arr1Count[key] === arr2Count[arr2El]) continue;
-        else return false;
-      }
-
-      return true;
+    for (const key in arr1Counts) {
+      if (arr1Counts[key] !== arr2Counts[key ** 2]) return false;
     }
+
+    return true;
   }
 }
 
