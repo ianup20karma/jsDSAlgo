@@ -7,7 +7,7 @@ function search(arr, n) {
     let right = arr.length - 1;
     while (left <= right) {
         const middle = Math.floor((left + right) / 2);
-        if (arr[middle] > n) right = middle + 1;
+        if (arr[middle] > n) right = middle - 1;
         else if (arr[middle] < n) left = middle + 1;
         else return middle;
     }
