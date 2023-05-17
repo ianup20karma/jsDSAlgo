@@ -1,13 +1,18 @@
 // Write a recursive function called nestedEvenSum. Return the sum of all even numbers in an object which may contain nested objects.
 
-function nestedEvenSum(obj, sumOfEven = 0) {
+function nestedEvenSum(obj) {
     if (!Object.keys(obj).length) null;
 
-    Object.values(obj).forEach(val => {
-        if (typeof val === 'object') sumOfEven += nestedEvenSum(val);
-        else if (typeof val === 'number' && val % 2 === 0) sumOfEven += val;
-    })
+    let sumOfEven = 0;
 
+    const getNestedEvenSum = (obj) => {
+        Object.values(obj).forEach(val => {
+            if (typeof val === 'number' && val % 2 === 0) sumOfEven += val;
+            else if (typeof val === 'object' && !Array.isArray(val)) getNestedEvenSum(val);
+        })
+    };
+
+    getNestedEvenSum(obj);
     return sumOfEven;
 }
 

@@ -2,17 +2,16 @@
 
 function capitalizeFirst(arr) {
     if (!arr.length) return [];
-    if (arr.length === 1) {
-        return arr[0].toUpperCase();
+    else if (arr.length === 1) return arr[0].toUpperCase();
+    else {
+        let newArr = [];
+
+        const [ head, ...tail ] = arr;
+        newArr.push(capitalizeFirst([head]));
+        newArr = newArr.concat(capitalizeFirst(tail));
+
+        return newArr;
     }
-
-    const [head, ...tail] = arr;
-    let newArr = [];
-
-    newArr.push(capitalizeFirst([head]));
-    newArr = newArr.concat(capitalizeFirst(tail));
-    
-    return newArr;
 }
 
 const result = capitalizeFirst(['i', 'am', 'learning', 'recursion']);

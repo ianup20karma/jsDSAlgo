@@ -1,15 +1,17 @@
 // Write a function called collectStrings which accepts an object and returns an array of all the values in the object that have a typeof string.
 
 function collectStrings(obj) {
-    if (!Object.keys(obj).length) null;
+    if (!Object.keys(obj).length) return;
+    else {
+        let strArr = [];
 
-    let strArr = [];
-    Object.keys(obj).forEach(key => {
-        if (typeof obj[key] === 'string') strArr.push(obj[key]);
-        else if (typeof obj[key] === 'object') strArr = strArr.concat(collectStrings(obj[key]));
-    })
+        Object.keys(obj).forEach(key => {
+            if (typeof obj[key] === 'string') strArr.push(obj[key]);
+            else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) strArr = strArr.concat(collectStrings(obj[key]));
+        });
 
-    return strArr;
+        return strArr;
+    }
 }
 
 const obj = {

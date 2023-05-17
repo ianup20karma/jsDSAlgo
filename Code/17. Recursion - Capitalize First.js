@@ -2,19 +2,14 @@
 
 function capitalizeFirst(arr) {
     if (!arr.length) return [];
-    if (arr.length === 1) {
-        const newStr = arr[0].split('');
-        newStr[0] = newStr[0].toUpperCase();
-        return newStr.join('');
+    else if (arr.length === 1) return arr[0].charAt(0).toUpperCase() + arr[0].slice(1);
+    else {
+        let newArr = [];
+        const [ head, ...tail ] = arr;
+        newArr.push(capitalizeFirst([head]));
+        newArr = newArr.concat(capitalizeFirst(tail));
+        return newArr;
     }
-
-    const [head, ...tail] = arr;
-    let newArr = [];
-
-    newArr.push(capitalizeFirst([head]));
-    newArr = newArr.concat(capitalizeFirst(tail));
-    
-    return newArr;
 }
 
 const result = capitalizeFirst(['car', 'taco', 'banana']);

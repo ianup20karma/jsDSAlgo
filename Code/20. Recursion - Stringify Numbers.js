@@ -2,14 +2,14 @@
 // which are numbers and converts them to strings. Recursion would be a great way to solve this!
 
 function stringifyNumbers(obj) {
-    if (!Object.keys(obj).length) null;
-
-    Object.keys(obj).forEach(key => {
-        if (typeof obj[key] === 'object') stringifyNumbers(obj[key]);
-        else if (typeof obj[key] === 'number') obj[key] = obj[key].toString();
-    })
-
-    return obj;
+    if (!Object.keys(obj).length) return;
+    else {
+        Object.keys(obj).forEach(key => {
+            if (typeof obj[key] === 'number') obj[key] = obj[key].toString();
+            else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) stringifyNumbers(obj[key]);
+        });
+        return obj;
+    }
 }
 
 const obj = {
