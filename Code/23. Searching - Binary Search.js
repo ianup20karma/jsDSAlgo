@@ -13,9 +13,11 @@ function binarySearch(arr, val) {
 
     while(left <= right) {
         const middle = Math.floor((left + right) / 2);
+
+        if (arr[middle] === val) return middle;
+
         if (arr[middle] > val) right = middle - 1;
-        else if (arr[middle] < val) left = middle + 1;
-        else return middle;
+        else left = middle + 1;
     }
 
     return -1;
