@@ -8,6 +8,8 @@
 // Keep shifting arr elements to left if those elements are greater than current value.
 // Stop and put the current value at the position just after where the array element is less than current value.
 
+// TIME COMPLEXITY FOR INSERTION SORT: O(n^2)
+
 // Refer: https://www.geeksforgeeks.org/insertion-sort/
 // We put the smallest number first and the rearrange the rest of the array.
 function insertionSort(arr) {

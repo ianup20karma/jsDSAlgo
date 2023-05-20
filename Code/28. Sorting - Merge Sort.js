@@ -7,6 +7,13 @@
 // Doing this recursively will merge the arrays back into the original size and the new array will also be sorted.
 // A helper function is also made to sort and merge two halves. Rest is taken care of using recursion.
 
+// Time Complexity for decompositions: O(log n)
+// If For any number of elements entered, say 32, we go about 5 splits. That is 2 raise to the power 5.
+// Time Complexity for comparisons per decomposition: O(n)
+// We would compare each element for a split when we merge.
+// TIME COMPLEXITY FOR MERGE SORT: O(n log n)
+// Better than O(n^2) worse than O(n)
+
 // Refer: https://www.geeksforgeeks.org/merge-sort/
 function mergeSort(arr) {
 

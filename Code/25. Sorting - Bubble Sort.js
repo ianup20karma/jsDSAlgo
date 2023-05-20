@@ -1,9 +1,11 @@
 // Write a function to sort an array using bubble sort.
 
 // Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed.
-
 // Note: Bubble sort places largest values in sorted position in every pass, i.e., end of array.
 
+// TIME COMPLEXITY FOR BUBBLE SORT: O(n^2)
+
+// Refer: https://www.geeksforgeeks.org/bubble-sort/
 function bubbleSort(arr) {
     const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
 

@@ -1,8 +1,9 @@
 // Write a function to sort an array using selection sort.
 
 // The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from the unsorted part and putting it at the beginning.
-
 // Note: Selection sort places smallest values in sorted position in every pass, i.e., start of array.
+
+// TIME COMPLEXITY FOR SELECTION SORT: O(n^2)
 
 // Refer: https://www.geeksforgeeks.org/selection-sort/
 // When we find the smallest value, we swap current value and the smallest value.
