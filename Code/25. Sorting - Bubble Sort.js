@@ -15,10 +15,12 @@ function bubbleSort(arr) {
     // i is initialized from greater to smaller number because we want to use i in inner loop.
     // Also, if no swaps are made in any pass, we break.
     // Reason - If we didn't swap last time, that means we'll not swap even in next pass.
-    let noSwaps;
-    for (let i = arr.length; i > 0; i--) {
-        noSwaps = true;
-        for (let j = 0; j < i - 1; j++) {
+
+    // Refer: https://www.geeksforgeeks.org/bubble-sort/
+    // We swap the adjacent values if found smaller than current value.
+    for (let i = 0; i < arr.length; i++) {
+        let noSwaps = true;
+        for (let j = 0; j < arr.length - 1 - i; j++) {
             if (arr[j] > arr[j + 1]) {
                 swap(arr, j, j + 1);
                 noSwaps = false;
@@ -26,7 +28,6 @@ function bubbleSort(arr) {
         }
         if (noSwaps) break;
     }
-
     return arr;
 }
 

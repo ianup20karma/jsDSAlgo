@@ -7,13 +7,16 @@
 // Keep current value in a temp variable.
 // Keep shifting arr elements to left if those elements are greater than current value.
 // Stop and put the current value at the position just after where the array element is less than current value.
+
+// Refer: https://www.geeksforgeeks.org/insertion-sort/
+// We put the smallest number first and the rearrange the rest of the array.
 function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         const crrVal = arr[i];
         let j = i - 1;
 
         while (j >= 0 && arr[j] > crrVal) {
-            arr[j + 1] = arr[j]
+            arr[j + 1] = arr[j];
             j--;
         }
 

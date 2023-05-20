@@ -4,13 +4,15 @@
 
 // Note: Selection sort places smallest values in sorted position in every pass, i.e., start of array.
 
+// Refer: https://www.geeksforgeeks.org/selection-sort/
+// When we find the smallest value, we swap current value and the smallest value.
 function selectionSort(arr) {
     const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
 
-    for (let i = 0; i < arr.length - 1; i++) {
+    for (let i = 0; i < arr.length; i++) {
         let smallest = i;
         for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[i]) smallest = Math.min(arr[smallest], arr[j]) === arr[smallest] ? smallest : j;
+            if (arr[j] < arr[smallest]) smallest = j;
         }
         if (i !== smallest) swap(arr, i, smallest);
     }
