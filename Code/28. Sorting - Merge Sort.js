@@ -16,28 +16,7 @@
 
 // Refer: https://www.geeksforgeeks.org/merge-sort/
 function mergeSort(arr) {
-
     if (arr.length <= 1) return arr;
-
-    const sortAndMerge = (arr1, arr2) => {
-        const pushAndIncrement = (arr, index, newArr) => {
-            newArr.push(arr[index]);
-            return index + 1;
-        };
-
-        let results = [];
-        let i = 0;
-        let j = 0;
-    
-        while (i < arr1.length && j < arr2.length) {
-            if (arr1[i] < arr2[j]) i = pushAndIncrement(arr1, i, results);
-            else j = pushAndIncrement(arr2, j, results);
-        }
-        while (i < arr1.length) i = pushAndIncrement(arr1, i, results);
-        while (j < arr2.length) j = pushAndIncrement(arr2, j, results);
-    
-        return results;
-    };
 
     const mid = Math.floor(arr.length / 2);
     const left = mergeSort(arr.slice(0, mid));
@@ -45,6 +24,26 @@ function mergeSort(arr) {
 
     return sortAndMerge(left, right);
 }
+
+const sortAndMerge = (arr1, arr2) => {
+    const pushAndIncrement = (arr, index) => {
+        results.push(arr[index]);
+        return index + 1;
+    };
+
+    let results = [];
+    let i = 0;
+    let j = 0;
+
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) i = pushAndIncrement(arr1, i);
+        else j = pushAndIncrement(arr2, j);
+    }
+    while (i < arr1.length) i = pushAndIncrement(arr1, i);
+    while (j < arr2.length) j = pushAndIncrement(arr2, j);
+
+    return results;
+};
 
 // const result = mergeSort([29, 10, 14, 30, 37, 14, 18]);
 const result = mergeSort([37, 45, 29, 8, 12, 88, -3]);
