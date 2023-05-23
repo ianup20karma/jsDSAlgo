@@ -4,6 +4,8 @@
 // The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.
 // It is an optimization over bubble sort.
 
+// ================================================================================================================================================================
+
 // Keep current value in a temp variable.
 // Keep shifting arr elements to left if those elements are greater than current value.
 // Stop and put the current value at the position just after where the array element is less than current value.

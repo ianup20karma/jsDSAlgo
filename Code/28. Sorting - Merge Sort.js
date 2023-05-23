@@ -3,6 +3,8 @@
 // The Merge Sort algorithm is a sorting algorithm that is based on the Divide and Conquer paradigm.
 // In this algorithm, the array is initially divided into two equal halves and then they are combined in a sorted manner.
 
+// ======================================================================================================================
+
 // Divide the array into smallest parts and take two halves of the array and sort them along with merge at last.
 // Doing this recursively will merge the arrays back into the original size and the new array will also be sorted.
 // A helper function is also made to sort and merge two halves. Rest is taken care of using recursion.

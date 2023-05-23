@@ -1,5 +1,10 @@
 // Write a function to sort an array using Quick Sort.
 
+// QuickSort is a sorting algorithm based on the Divide and Conquer algorithm that picks an element as a pivot and
+// partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
+
+// =====================================================================================================================
+
 // We implement a helper function called pivot which takes an array as parameter
 // and returns an array where all the values smaller than the pivot are pushed to the left side of it.
 // Takes first any element's index as pivotIndex and start loop from 2nd element (i.e. arr[1]).
