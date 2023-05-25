@@ -10,6 +10,10 @@ Feel free to go through my code and be a critic.
 Note: This is a *JavaScript* ONLY repository.
 
 
+Instructor: Colt Steele
+Link to course: https://www.udemy.com/js-algorithms-and-data-structures-masterclass/?persist_locale&locale=en_US
+
+
 How To Run The Code:
 ====================
 1. Install *VS Code*.
