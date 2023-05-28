@@ -1,0 +1,166 @@
+class Node {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+
+    push(val) {
+        const node = new Node(val);
+        if (!this.head) {
+            this.head = node;
+            this.tail = this.head;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.length++;
+    }
+
+    pop() {
+        if (!this.head) return undefined;
+        else if (this.length === 1) {
+            let current = this.head;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return current;
+        } else {
+            let current = this.head;
+            let newTail = current;
+
+            while(current.next) {
+                newTail = current;
+                current = current.next;
+            }
+
+            newTail.next = null;
+            this.tail = newTail;
+            this.length--;
+            return current;
+        }
+    }
+
+    shift() {
+        if (!this.head) return undefined;
+        else if (this.length === 1) {
+            let current = this.head;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return current;
+        } else {
+            let current = this.head;
+            this.head = this.head.next;
+            this.length--;
+            return current;
+        }
+    }
+
+    unshift(val) {
+        const newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
+
+    get(index) {
+        if (!this.head || (index < 0) || (index >= this.length)) return null;
+        let counter = 0;
+        let current = this.head;
+        while(counter !== index) {
+            current = current.next;
+            counter++;
+        }
+        return current;
+    }
+
+    set(index, value) {
+        let nodeValue = this.get(index);
+        if (nodeValue) {
+            nodeValue.val = value;
+            return nodeValue;
+        } else return null;
+    }
+
+    insert(index, value) {
+        if ((index < 0) || (index > this.length)) return false;
+        if (index === 0) return !!this.unshift(value);
+        if (index === this.length) return !!this.push(value);
+
+        const newNode = new Node(value);
+        const preIndexNode = this.get(index - 1);
+        const preIndexNodeNext = preIndexNode.next;
+        preIndexNode.next = newNode;
+        newNode.next = preIndexNodeNext;
+        this.length++;
+        return true;
+    }
+
+    remove(index) {
+        if ((index < 0) || (index > this.length)) return undefined;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+
+        const preIndexNode = this.get(index - 1);
+        const toBeRemovedNode = preIndexNode.next;
+        preIndexNode.next = toBeRemovedNode.next;
+        this.length--;
+        return toBeRemovedNode;
+    }
+
+    reverse() {
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+
+        let next;
+        let prev = null;
+        for (let i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+
+        return this;
+    }
+}
+
+const list = new SinglyLinkedList();
+list.push('Hello');
+// Hello -> null
+list.push('How are you?');
+// Hello -> How are you? null
+list.push('Good Bye!');
+// Hello -> How are you? -> Good Bye! -> null
+list.pop();
+// Hello -> How are you? -> null
+list.shift();
+// How are you? -> null
+list.unshift('Hello');
+// Hello -> How are you? -> null
+console.log(list.get(1)); // How are you?
+console.log(list.set(1, 'How are you mate?')); // How are you mate?
+list.insert(2, 'Good Bye!');
+// Hello -> How are you mate? -> Good Bye! -> null
+list.insert(2, 'Nice to meet you');
+// Hello -> How are you mate? -> Nice to meet you -> Good Bye! -> null
+list.remove(2);
+// Hello -> How are you mate? -> Good Bye! -> null
+console.log(list.reverse());
+// Good Bye! -> How are you mate? -> Hello -> null
+console.log(list);
