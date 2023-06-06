@@ -1,6 +1,13 @@
 // A singly linked list is a linear data structure in which the elements are not stored in contiguous memory locations
 // and each element is connected only to its next element using a pointer.
 
+// TIME COMPLEXITY OF SLL:
+// INSERTION: O(1)
+// REMOVAL: It depends... O(1) or O(N)
+// SEARCHING: O(N)
+// ACCESS: O(N)
+// Foundation of other data structures like Stacks and Queues.
+
 class Node {
     constructor(val) {
         this.val = val;

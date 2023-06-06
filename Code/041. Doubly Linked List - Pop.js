@@ -1,6 +1,14 @@
 // A doubly linked list (DLL) is a special type of linked list in which each node contains a pointer to the previous node
 // as well as the next node of the linked list.
 
+// TIME COMPLEXITY OF DLL:
+// INSERTION: O(1)
+// REMOVAL: O(1)
+// SEARCHING: O(N)
+// ACCESS: O(N)
+// Technically SEARCHING it is O(N/2) but that's still O(N)
+// Better than SLL, but comes at the cost of extra memory for the extra pointer (previous pointer).
+
 class Node {
     constructor(val) {
         this.val = val;

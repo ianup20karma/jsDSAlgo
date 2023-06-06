@@ -123,6 +123,42 @@ class DoublyLinkedList {
             return foundNode;
         } else return null;
     }
+
+    insert(index, value) {
+        if ((index < 0) || (index > this.length)) return false;
+        if (index === 0) return !!this.unshift(value);
+        if (index === this.length) return !!this.push(value);
+
+        const newNode = new Node(value);
+        const preIndexNode = this.get(index - 1);
+        const indexNode = preIndexNode.next;
+
+        preIndexNode.next = newNode;
+        newNode.previous = preIndexNode;
+        newNode.next = indexNode;
+        indexNode.previous = newNode;
+
+        this.length++;
+        return true;
+    }
+
+    remove(index) {
+        if ((index < 0) || (index > this.length)) return undefined;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+
+        const toBeRemovedNode = this.get(index);
+        const beforeNode = toBeRemovedNode.previous;
+        const afterNode = toBeRemovedNode.next;
+
+        toBeRemovedNode.previous = null;
+        toBeRemovedNode.next = null;
+        beforeNode.next = afterNode;
+        afterNode.previous = beforeNode;
+
+        this.length--;
+        return toBeRemovedNode;
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -147,4 +183,16 @@ list.unshift('Hello');
 console.log(list.get(1)); // How are you?
 console.log(list.get(2)); // Good Bye!
 console.log(list.set(1, 'How are you mate?')); // How are you mate?
+list.pop();
+// null <- Hello <- -> How are you? -> null
+list.pop();
+// null <- Hello -> null
+list.insert(1, 'Good Bye!');
+// null <- Hello -> <- Good Bye! -> null
+list.insert(1, 'How are you mate?');
+// null <- Hello -> <- How are you mate? -> <- Good Bye! -> null
+list.insert(2, 'Nice to meet you!');
+// null <- Hello -> <- How are you mate? -> <- Nice to meet you! -> <- Good Bye! -> null
+list.remove(2);
+// null <- Hello -> <- How are you mate? -> <- Good Bye! -> null
 console.log(list);
