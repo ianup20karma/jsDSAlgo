@@ -28,6 +28,31 @@ class DoublyLinkedList {
         }
         this.length++;
     }
+
+    pop() {
+        if (this.length === 0) return undefined;
+        else if (this.length === 1) {
+            const crrNode = this.head;
+            this.head = null;
+            this.tail = this.head;
+            this.length--;
+            return crrNode;
+        } else {
+            let crrNode = this.head;
+            let newTail = crrNode;
+
+            while(crrNode.next) {
+                newTail = crrNode;
+                crrNode = crrNode.next;
+            }
+
+            crrNode.previous = null;
+            newTail.next = null;
+            this.tail = newTail;
+            this.length--;
+            return crrNode;
+        }
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -37,4 +62,10 @@ list.push('How are you?');
 // null <- Hello <- -> How are you? -> null
 list.push('Good Bye!');
 // null <- Hello <- -> How are you? <- -> Good Bye! -> null
+list.pop();
+// null <- Hello <- -> How are you? -> null
+list.pop();
+// null <- Hello -> null
+list.pop();
+// null
 console.log(list);
