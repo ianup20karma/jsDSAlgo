@@ -148,6 +148,30 @@ class SinglyLinkedList {
 
         return this;
     }
+
+    // This function should rotate all the nodes in the list by some number passed in.
+    // For instance, if your list looks like 1 -> 2 -> 3 -> 4 -> 5 and you rotate by 2,
+    // the list should be modified to 3 -> 4 -> 5 -> 1 -> 2.
+    // The number passed in to rotate can be any integer (should work with negative indexes).
+    // Time Complexity: O(N), where N is the length of the list.
+    // Space Complexity: O(1)
+    rotate(number) {
+        const index = number < 0 ? number + this.length : number;
+
+        if (index < 0 || index >= this.length) return undefined;
+        if (index === 0) return this;
+
+        const prevNode = this.get(index - 1);
+
+        if (!prevNode) return undefined;
+
+        this.tail.next = this.head;
+        this.head = prevNode.next;
+        this.tail = prevNode;
+        prevNode.next = null;
+
+        return this;
+    }
 }
 
 const list = new SinglyLinkedList();
@@ -173,4 +197,8 @@ list.remove(2);
 // Hello -> How are you mate? -> Good Bye! -> null
 console.log(list.reverse());
 // Good Bye! -> How are you mate? -> Hello -> null
+console.log(list.rotate(-2));
+// How are you mate? -> Hello -> Good Bye! -> null
+list.insert(1, list.remove(0));
+// Hello -> How are you mate? -> Good Bye! -> null
 console.log(list);
