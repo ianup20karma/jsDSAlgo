@@ -9,6 +9,7 @@
 // Technically SEARCHING it is O(N/2) but that's still O(N)
 // Better than SLL, but comes at the cost of extra memory for the extra pointer (previous pointer).
 
+// Refer: https://www.geeksforgeeks.org/data-structures/linked-list/doubly-linked-list/
 class Node {
     constructor(val) {
         this.val = val;

@@ -8,6 +8,7 @@
 // ACCESS: O(N)
 // Foundation of other data structures like Stacks and Queues.
 
+// Refer: https://www.geeksforgeeks.org/data-structures/linked-list/singly-linked-list/
 class Node {
     constructor(val) {
         this.val = val;
@@ -154,7 +155,7 @@ const list = new SinglyLinkedList();
 list.push('Hello');
 // Hello -> null
 list.push('How are you?');
-// Hello -> How are you? null
+// Hello -> How are you? -> null
 list.push('Good Bye!');
 // Hello -> How are you? -> Good Bye! -> null
 list.pop();
