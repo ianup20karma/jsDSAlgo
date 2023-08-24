@@ -11,6 +11,11 @@
 // Min-Heap: In a Min-Heap the key present at the root node must be minimum among the keys present at all of it’s children.
 
 // For any index of an array n, the left child is stored at (2n + 1) and the right child is stored at (2n + 2).
+
+// TIME COMPLEXITY :
+// Insertion - O(log N)
+// Removal - O(log N)
+// Search - O(N)
  
 class MaxBinaryHeap {
     constructor() {
